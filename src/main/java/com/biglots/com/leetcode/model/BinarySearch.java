@@ -9,4 +9,8 @@ public class BinarySearch {
         Arrays.sort(arr);
         System.out.println(Arrays.toString(arr));
     }
+    public int search(int[] arr, int target) {
+
+        return -1;
+    }
 }
