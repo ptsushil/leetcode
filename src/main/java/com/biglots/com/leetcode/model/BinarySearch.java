@@ -4,13 +4,35 @@ import java.util.Arrays;
 
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] arr = {5, 4, 3, 1, 2, 6, 7, 8, 9};
-        System.out.println(Arrays.toString(arr));
+        int target = 8;
+        int[] arr = {1,2,3,4,5,6,7,8,9};
+        int index= search(arr,target);
+        System.out.println( " Index found " + index);
+
+
+    }
+    public static int search(int[] arr, int target) {
         Arrays.sort(arr);
         System.out.println(Arrays.toString(arr));
-    }
-    public int search(int[] arr, int target) {
+        int left =0;
+        int right = arr.length -1;
+        while(left <= right)
+        {
+            int mid = left + (right - left)/2;  // To prevent overflow
+            if (arr[mid] == target)
+            {
+                return mid;
+            }
+            if (target < arr[mid])
+            {
+                right = mid -1;
 
-        return -1;
+            }else {
+                left = mid+1;
+
+            }
+
+        }
+        return -1;  // not found
     }
 }
