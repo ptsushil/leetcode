@@ -7,7 +7,7 @@ public class ShoppingCart {
 
     private List<Double> itemPrices;
     private Coupon appliedCoupon;
-
+    private double rewardPoints;
     public ShoppingCart() {
         this.itemPrices = new ArrayList<>();
         this.appliedCoupon = null;
@@ -26,9 +26,16 @@ public class ShoppingCart {
         if (appliedCoupon != null) {
 
             double discount = total * appliedCoupon.getDiscountPercentage()/100;
+            double reward =   total/10;
             total -= discount;
         }
         return total;
+    }
+
+    public double earnRewardPoints() {
+        double total = itemPrices.stream().mapToDouble(Double::doubleValue).sum();
+        this.rewardPoints = total/10;
+        return rewardPoints;
     }
 
     // Display cart details
@@ -50,7 +57,7 @@ public class ShoppingCart {
         cart.addItem(50.00);
         cart.addItem(40.00);
         cart.displayCart();
-        Coupon coupon = new Coupon("SAVE10", 20);
+        Coupon coupon = new Coupon("SAVE10", 1);
         cart.applyCoupon(coupon);
         cart.displayCart();
     }

@@ -35,4 +35,14 @@ public class ShoppingCartTest {
         assertEquals (90, shoppingCart.calculateTotal());
 
     }
+    @Test
+    public void testEarnRewarPoints(){
+        shoppingCart.addItem(10);
+        shoppingCart.addItem(20);
+        shoppingCart.addItem(30);
+        shoppingCart.addItem(40);
+        shoppingCart.earnRewardPoints();
+        assertEquals (10.0, shoppingCart.calculateTotal());
+
+    }
 }
